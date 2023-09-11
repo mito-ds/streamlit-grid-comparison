@@ -4,7 +4,7 @@ import streamlit as st
 
 st.title("`st.data_editor`")
 
-st.header("When to use this grid")
+st.markdown("### When to use this grid")
 
 st.markdown("""
 - The dataset is larger than what can be displayed with `st.table`
@@ -16,7 +16,7 @@ st.markdown("""
 **TL;DR** - `st.data_editor` is great for letting users view a dataset and perform very basic data cleaning operations on it.
 """)
 
-st.header("Basic usage")
+st.markdown("### Basic usage")
 
 st.code("""
 import streamlit as st
@@ -33,17 +33,17 @@ new_df = st.data_editor(df)
 
 st.write('You edited', (df != new_df).sum().sum(), 'values')
 
-st.header("Exploration options")
+st.markdown("### Exploration options")
 
 # TODO
 
-st.header("Editing options")
+st.markdown("### Editing options")
 
 # TODO:
 
-st.header("Customization")
+st.markdown("### Customization")
 
-st.text("Similar to `st.dataframe`, there are a large amount of customization options available for `st.data_editor`.")
+st.markdown("Similar to `st.dataframe`, there are a large amount of customization options available for `st.data_editor`.")
 
 st.code("""
 import streamlit as st
@@ -87,23 +87,4 @@ st.write('You edited', (df != new_df).sum().sum(), 'values')
 
         
 
-st.header("Performance")
-
-# TODO:
-
-st.header("Pros and cons")
-
-st.subheader("Pros")
-
-st.markdown("""
-- Easy to use
-- Built-in
-""")
-            
-st.subheader("Cons")
-
-st.markdown("""
-- No customization
-- No editing options
-- Not suitable for large datasets
-""")
+st.markdown("### Performance")

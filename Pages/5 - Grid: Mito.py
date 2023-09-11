@@ -4,7 +4,7 @@ import streamlit as st
 
 st.title("`AgGrid`")
 
-st.header("When to use this grid")
+st.markdown("### When to use this grid")
 
 st.markdown("""
 - You want to provide users with a spreadsheet that they can edit like an Excel document, including sorting, filtering, formulas, pivot tables, and more.
@@ -14,9 +14,9 @@ st.markdown("""
 **TL;DR** - `Mito` is great for providing an Excel-like experience to your app users. It also allows you to automate the edits that users make to the spreadsheet, like recording a marco in Excel, but with Python.
 """)
 
-st.header("Basic usage")
+st.markdown("### Basic usage")
 
-st.text('As AgGrid is a third party library, you need to install it with `pip install mitosheet`.')
+st.markdown('As AgGrid is a third party library, you need to install it with `pip install mitosheet`.')
 
 st.code("""
 import streamlit as st
@@ -31,7 +31,7 @@ from mitosheet.streamlit.v1 import spreadsheet
 df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
 spreadsheet(df)
 
-st.header("Exploration options")
+st.markdown("### Exploration options")
 
 st.markdown("""
 Mito provides a large amount of exploration options, including:
@@ -43,7 +43,7 @@ Mito provides a large amount of exploration options, including:
 All of these features are enabled out of the box, with no additional code required.            
 """)
 
-st.header("Editing options")
+st.markdown("### Editing options")
 
 st.markdown("""
 Mito aims to provide a full Excel-like experience, including:
@@ -55,7 +55,7 @@ Mito aims to provide a full Excel-like experience, including:
 
 st.subheader("Saving user edits")
 
-st.header("Customization")
+st.markdown("### Customization")
 
 st.markdown("""
 Mito exposes frontend customization to the application user, including:
@@ -68,17 +68,9 @@ Mito Enterprise provides additional customization options, including:
 3. [Customizing the context menu](https://docs.trymito.io/how-to/customizing-the-context-menu)
 """)
 
-st.header("Performance")
+st.markdown("### Performance")
 
 # TODO:
-
-st.header("Pros and cons")
-
-st.subheader("Pros")
-
-# TODO:
-            
-st.subheader("Cons")
 
 # Third party library
 # Limited visual customization

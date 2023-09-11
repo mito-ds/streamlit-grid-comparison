@@ -4,7 +4,7 @@ import streamlit as st
 
 st.title("`AgGrid`")
 
-st.header("When to use this grid")
+st.markdown("### When to use this grid")
 
 st.markdown("""
 - You want advanced visual customization of the data being displayed
@@ -14,34 +14,24 @@ st.markdown("""
 **TL;DR** - `AgGrid` 
 """)
 
-st.header("Basic usage")
+st.markdown("### Basic usage")
 
-st.text('As AgGrid is a third party library, you need to install it with `pip install streamlit-aggrid`.')
+st.markdown('As AgGrid is a third party library, you need to install it with `pip install streamlit-aggrid`.')
 
 # TODO: 
 
-st.header("Exploration options")
+st.markdown("### Exploration options")
 
 # TODO
 
-st.header("Editing options")
+st.markdown("### Editing options")
 
 # TODO:
 
-st.header("Customization")
+st.markdown("### Customization")
 
 # TODO:
 
-st.header("Performance")
-
-# TODO:
-
-st.header("Pros and cons")
-
-st.subheader("Pros")
-
-# TODO:
-            
-st.subheader("Cons")
+st.markdown("### Performance")
 
 # TODO:

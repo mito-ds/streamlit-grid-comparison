@@ -6,13 +6,13 @@ st.markdown("""
             
 ## Motivation
             
-Streamlit makes it incredibly easy to build and share data apps with your teammates. 
+Streamlit makes it easy to build and share data apps with your teammates. 
             
 Of course, your teammates want a grid! At least, so says the past 40 years of Excel’s dominance.
 
-Streamlit has a variety of built-in grid components, and there are a variety of third party libraries that provide grids as well. 
+Streamlit has a variety of built-in grid components, and there are a variety of third party grids as well.
             
-Here, we’ll explore the most popular Streamlit grid libraries, and discuss which are appropriate for your use case.
+This app, explores the most popular Streamlit grids, and discusses which are appropriate for your use case.
 
 ## The Contenders
             
@@ -25,7 +25,7 @@ Here, we’ll explore the most popular Streamlit grid libraries, and discuss whi
 
 #### A disclaimer  
 
-W’re the authors of the `Mito` package — but we’re doing our very best to stay unbiased! Mito is great for some use cases, but isn't a great fit for others. 
+We’re the authors of the `Mito` package — but we’re doing our very best to stay unbiased! Mito is great for some use cases, but not others. 
             
 Feel free to open a PR against this [repo](https://github.com/mito-ds/streamlit-grid-comparison) if you think we can represent any of the libraries here better.
 
