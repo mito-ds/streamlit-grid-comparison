@@ -110,10 +110,10 @@ with st.expander("Try using st.dataframe with different sized datasets"):
     import numpy as np
 
     # Create random data
-    data = np.random.rand(num_rows, num_columns)
+    data = np.random.rand(num_rows, num_cols)
 
     # Convert the NumPy array to a DataFrame
-    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_cols)])
 
     st.dataframe(
         df,
@@ -121,15 +121,11 @@ with st.expander("Try using st.dataframe with different sized datasets"):
     )
     """)
 
-    # Define the number of rows and columns
-    num_rows = num_rows
-    num_columns = num_cols
-
     # Create random data
-    data = np.random.rand(num_rows, num_columns)
+    data = np.random.rand(num_rows, num_cols)
 
     # Convert the NumPy array to a DataFrame
-    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_cols)])
 
     st.dataframe(
         df,

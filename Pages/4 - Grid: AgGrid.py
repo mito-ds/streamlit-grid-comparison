@@ -20,6 +20,8 @@ st.markdown('As AgGrid is a third party library, you need to install it with `pi
 
 # TODO: 
 
+st.markdown("# Features")
+
 st.markdown("### Exploration options")
 
 # TODO

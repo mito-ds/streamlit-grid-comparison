@@ -34,6 +34,9 @@ new_df = st.data_editor(df)
 
 st.write('You edited', (df != new_df).sum().sum(), 'values')
 
+
+st.markdown("# Features")
+
 st.markdown("### Exploration options")
 
 # TODO
@@ -122,10 +125,10 @@ with st.expander("Try using st.data_grid with different sized datasets"):
     import numpy as np
 
     # Create random data
-    data = np.random.rand(num_rows, num_columns)
+    data = np.random.rand(num_rows, num_cols)
 
     # Convert the NumPy array to a DataFrame
-    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_cols)])
 
     st.data_editor(
         df,
@@ -134,15 +137,11 @@ with st.expander("Try using st.data_grid with different sized datasets"):
     )
     """)
 
-    # Define the number of rows and columns
-    num_rows = num_rows
-    num_columns = num_cols
-
     # Create random data
-    data = np.random.rand(num_rows, num_columns)
+    data = np.random.rand(num_rows, num_cols)
 
     # Convert the NumPy array to a DataFrame
-    data = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+    data = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_cols)])
 
     st.data_editor(
         df,
