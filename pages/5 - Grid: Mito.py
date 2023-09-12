@@ -71,6 +71,17 @@ Then, you can reuse that macro on other datasets, without having to write any ad
 
 Mito is the only grid that allows you to record user edits and reuse them on other datasets.    
 """)
+            
+with st.expander("Recording user edits example"):
+
+    df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+    new_dfs, code = spreadsheet(df, key='macro')
+
+    st.code(f"""
+{code}
+{len(code) == 0 and 'Edit the spreadsheet above to see generated code' or ''}
+""")
+            
 
 st.markdown("### Customization")
 
