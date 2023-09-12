@@ -32,7 +32,7 @@ st.markdown("# Features")
 
 st.markdown("### Exploration options")
 
-st.markdown("`st.dataframe` supports sorting, column resizing, and table search out of the box. This is the only exploration option available by default.")
+st.markdown("`st.dataframe` supports sorting, column resizing, and table search out of the box. These are the only exploration options available by default.")
 st.markdown("However, if you want to add filtering to `st.dataframe`, you can follow this [Streamit Blog Post](https://blog.streamlit.io/auto-generate-a-dataframe-filtering-ui-in-streamlit-with-filter_dataframe/) which uses Streamlit inputs and multiselects to filter the dataframe before rendering it in the grid.")
 
 st.markdown("### Editing options")
