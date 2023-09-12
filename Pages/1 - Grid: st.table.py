@@ -1,19 +1,20 @@
 import pandas as pd
+import numpy as np
 import streamlit as st
 
 st.title("`st.table`")
 
-st.header("When to use this grid")
+st.markdown("### When to use this grid")
 
 st.markdown("""
-- The dataset being displayed is smaller - less than 50 rows
-- You need to display the data without any visual customization
-- Users do not need to be able to sort, filter, or edit the data in any way
+- Your dataset is small: less than 30 rows and 5 columns
+- You don't need any custom data visualizations -- just a plain table
+- Users don't need to sort, filter, or edit the data in any way
             
 **TL;DR** - `st.table` is great for displaying tiny datasets in a static table.
 """)
 
-st.header("Basic usage")
+st.markdown("### Basic usage")
 
 st.code("""
 import streamlit as st
@@ -26,37 +27,50 @@ st.table(df)
 df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
 st.table(df)
 
-st.header("Exploration options")
+st.markdown("# Features")
 
-st.text("There are no editing options available for `st.table`. You simply can just scroll through the table.")
+st.markdown("### Exploration options")
 
-st.header("Editing options")
+st.markdown("There are no advanced exploration features available for `st.table`. Users can simply scroll through the table.")
 
-st.text("There are no editing options available for `st.table`.")
-st.text('You cannot sort, filter, or edit the data in any way.')
+st.markdown("### Editing options")
 
-st.header("Customization")
+st.markdown("There are no editing options available for `st.table`. Users cannot sort, filter, or edit the data in any way.")
 
-st.text("There is no customization available for `st.table`.")
+st.markdown("### Customization")
 
-st.header("Performance")
+st.markdown("There is no customization available for `st.table`.")
 
-st.text("`st.table` lays out the entire table at once, so it's not suitable for large datasets.")
+st.markdown("### Performance")
 
-st.header("Pros and cons")
+st.markdown("`st.table` draws the entire table upon render, so it's not suitable for large datasets.")
 
-st.subheader("Pros")
+with st.expander("Try using st.dataframe with different sized datasets"):
+    num_rows = st.number_input("Number of Rows", value=10, key='num_rows')
+    num_cols = st.number_input("Number of Columns", value=3, key='num_cols')
 
-st.markdown("""
-- Easy to use
-- Built-in
-""")
-            
-st.subheader("Cons")
+    st.code("""
+    import pandas as pd
+    import numpy as np
 
-st.markdown("""
-- No customization
-- No editing options
-- Not suitable for large datasets
-""")
-            
+    # Create random data
+    data = np.random.rand(num_rows, num_columns)
+
+    # Convert the NumPy array to a DataFrame
+    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+
+    st.table(df)
+    """)
+
+    # Define the number of rows and columns
+    num_rows = num_rows
+    num_columns = num_cols
+
+    # Create random data
+    data = np.random.rand(num_rows, num_columns)
+
+    # Convert the NumPy array to a DataFrame
+    df = pd.DataFrame(data, columns=[f'Column_{i}' for i in range(num_columns)])
+
+    st.table(df)
+
