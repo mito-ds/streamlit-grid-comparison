@@ -39,7 +39,24 @@ st.markdown("There are no editing options available for `st.table`. Users cannot
 
 st.markdown("### Customization")
 
-st.markdown("There is no customization available for `st.table`.")
+st.markdown("There are minimal customization available for `st.table`. You can use a pandas styler to change the style of the table.")
+
+with st.expander("Using a pandas styler to change the style of the table"):
+    st.code("""
+    import streamlit as st
+    import pandas as pd
+            
+    df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+    st.table(
+        df.style.highlight_max(axis=0),
+        hide_index=True,
+    )
+    """)
+            
+    df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+    st.table(
+        df.style.highlight_max(axis=0),
+    )
 
 st.markdown("### Performance")
 
