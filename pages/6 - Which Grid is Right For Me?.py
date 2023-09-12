@@ -18,7 +18,7 @@ PERFORMANCE_QUESTIONS = [
     (
         "My dataset has > 2M rows",
         ['`Mito`'],
-        'does not out at 200 MB of data'
+        'has ability to render > 200 MB of data by default'
     ),
 ]
 
