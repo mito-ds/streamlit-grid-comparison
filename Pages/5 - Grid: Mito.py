@@ -39,7 +39,7 @@ st.markdown("""
 Mito provides a large number of exploration features, including:
 1. [Graphing](https://docs.trymito.io/how-to/graphing). Try clicking the **Graph** button in the toolbar to generate a plotly graph. 
 2. [Pivot tables](https://docs.trymito.io/how-to/pivot-tables). Try clicking the **Pivot** button in the toolbar.
-3. [Sorting](https://docs.trymito.io/how-to/sort-data) and [filtering](https://docs.trymito.io/how-to/filter-data). Click the Filter icon inside any column header.
+3. [Sorting](https://docs.trymito.io/how-to/sort-data) and [filtering](https://docs.trymito.io/how-to/filter-data). Click the **Filter** icon inside any column header.
 4. And much more. See our [documentation](https://docs.trymito.io) for more information.
             
 All of these features work out of the box, with no additional code required.            

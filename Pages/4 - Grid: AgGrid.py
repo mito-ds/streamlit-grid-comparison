@@ -13,7 +13,7 @@ st.markdown("""
 - You want users to be able to sort, filter, and perform basic editing operations on the data
 - You want the rest of your streamlit application to react to the data the user has selected
             
-**TL;DR** - `AgGrid` offers slightly exploration and editing options than `st.dataframe`, and allows for the most visual customization of any grid.
+**TL;DR** - `AgGrid` offers slightly more exploration and editing options than `st.dataframe`, and allows for the most visual customization of any grid.
 """)
 
 st.markdown("### Basic usage")
@@ -41,7 +41,7 @@ st.markdown("""
 By default, AgGrid provides a few exploration features, including:
 1. Sorting data - click on the column header to sort the data
 2. Filtering data - click on the column header dropdown to filter the data
-3. Hiding or pining columns for better visibility
+3. Hiding or pinning columns for better visibility
 
 Beyond the default, AgGrid provides a large number of configurable exploration features, including:
 1. Highlighting cells based on their value
