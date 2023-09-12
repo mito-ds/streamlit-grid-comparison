@@ -43,8 +43,9 @@ By default, AgGrid provides a few exploration features, including:
 2. Filtering data - click on the column header dropdown to filter the data
 3. Hiding or pinning columns for better visibility
 
-Beyond the default, AgGrid provides a large number of configurable exploration features, including:
+Beyond the default, AgGrid provides configurable exploration features, including:
 1. Highlighting cells based on their value
+2. Custom cell rendering for better data representation
 """)
 
 st.markdown("### Editing options")

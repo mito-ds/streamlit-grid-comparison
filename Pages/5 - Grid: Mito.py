@@ -59,6 +59,19 @@ Mito aims to provide a full Excel-like editing experience, including:
 
 st.subheader("Saving user edits")
 
+st.markdown("""
+Mito allows you to record the edits that users make to the spreadsheet, so you can reuse those edits on other datasets. Aka: you want to build an automation!
+
+In practice, this means that you can record a macro in Python, and then reuse that macro on other datasets. For example, you can record a macro that:
+1. Imports a dataset from a CSV
+2. Cleans the data, using Excel-like formulas, pivot tables, and more
+3. Generates a graph
+
+Then, you can reuse that macro on other datasets, without having to write any additional code. This is a great way to build automations for your team, and to make your team more productive.
+
+Mito is the only grid that allows you to record user edits and reuse them on other datasets.    
+""")
+
 st.markdown("### Customization")
 
 st.markdown("""

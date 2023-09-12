@@ -39,16 +39,36 @@ st.markdown("# Features")
 
 st.markdown("### Exploration options")
 
-# TODO
+st.markdown("`st.data_editor` supports the same exploration options as `st.dataframe`: sorting, column resizing, and table search are supported out of the box. These are the only exploration options available by default.")
+st.markdown("However, if you want to add filtering to `st.data_editor`, you can follow this [Streamit Blog Post](https://blog.streamlit.io/auto-generate-a-dataframe-filtering-ui-in-streamlit-with-filter_dataframe/) which uses Streamlit inputs and multiselects to filter the dataframe before rendering it in the grid.")
 
 st.markdown("### Editing options")
 
-# TODO:
+st.markdown("""`st.data_editor` supports: 
+- Editing specific cells - simply double click on a cell to edit it
+- Deleting rows - select a row and then press `Delete`
+- Adding rows - click on the bottom row and enter data""")
+
+with st.expander("Editing options for `st.data_editor`"):
+    st.code("""
+import streamlit as st
+import pandas as pd
+
+df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+edited_df = st.data_editor(df, num_rows="dynamic")
+
+st.write(edited_df)
+""")
+    df = pd.read_csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+    edited_df = st.data_editor(df, num_rows="dynamic")
+
+
+
+    st.write(edited_df)
 
 st.markdown("### Customization")
 
 st.markdown("Similar to `st.dataframe`, there are a large amount of customization options available for `st.data_editor`.")
-
 
 with st.expander("Using column-level and dataframe-wide configurations"):
     st.code("""

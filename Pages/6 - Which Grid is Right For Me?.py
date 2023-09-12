@@ -20,11 +20,6 @@ PERFORMANCE_QUESTIONS = [
         ['`Mito`'],
         'does not out at 200 MB of data'
     ),
-    (
-        "I want to apply apply conditional formatting",
-        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
-        'allows you to pass a pandas styler object, or configure conditional formatting in the UI'
-    ),
 ]
 
 EXPLORATION_QUESTIONS = [
@@ -43,6 +38,11 @@ EXPLORATION_QUESTIONS = [
         ['`Mito`'],
         'has built-in graphing'
     ), 
+    (
+        "I want to apply apply conditional formatting",
+        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'allows you to configure conditional formatting'
+    ),
 ]
 
 EDITING_QUESTIONS = [
