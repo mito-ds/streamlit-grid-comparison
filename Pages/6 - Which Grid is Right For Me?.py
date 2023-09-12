@@ -1,73 +1,172 @@
 
 import streamlit as st
-# Questions
-# My dataset has > 50 rows
-# 
-
-
-def get_grid_recconmendation(
-    has_greater_than_50_rows,
-    has_greater_than_1M_rows,
-    want_built_in_sorting,
-    want_built_in_filtering,
-    want_built_in_excel_formulas,
-    want_built_in_pivot_tables,
-    want_edits_to_propogate_to_rest_of_app,
-    want_automation
-):
-
-    if want_automation: 
-        return "Mito"
-
-    if want_built_in_excel_formulas:
-        return "Mito"
-
-    if has_greater_than_1M_rows: 
-        return "Mito"
-
-    if want_edits_to_propogate_to_rest_of_app: 
-        return "Mito or AgGrid"
-
-    if want_built_in_pivot_tables:
-        return "Mito or AgGrid" # TODO: Figure out if this is supported out of the box
-
-    if want_built_in_filtering:
-        return "Mito or AgGrid"
-
-    if want_built_in_sorting or want_built_in_single_cell_editing or has_greater_than_50_rows:
-        return "st.data_editor or st.dataframe"
-
-    return "st.table"
     
+st.markdown('### The Grid Quiz: Which Streamlit Grid is Right For Me?')
 
-st.markdown('### The Grid Quiz: Which Grid is Right For Me?')
+st.write("Check the boxes that apply to you, and then scroll down -- we'll tell you which grid is right for you and why!")
 
-with st.form("grid_quiz"):
-    st.write("Check the boxes that apply to you.")
-    has_greater_than_50_rows = st.checkbox("My dataset has > 50 rows")
-    has_greater_than_1M_rows = st.checkbox("My dataset has > 1M rows")
-    want_built_in_sorting = st.checkbox("I want built-in sorting")
-    want_built_in_filtering = st.checkbox("I want built-in filtering")
-    want_built_in_single_cell_editing = st.checkbox("I want built-in single cell editing")
-    want_built_in_excel_formulas = st.checkbox("I want built-in Excel formulas")
-    want_built_in_pivot_tables = st.checkbox("I want built-in pivot tables")
-    want_edits_to_propogate_to_rest_of_app = st.checkbox("I want edits made to the grid to propogate to the rest of my app")
-    want_automation = st.checkbox("I want to record user edits and reuse them on other datasets")
+answers = {}
 
-    # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
-    if submitted:
+ALL_GRIDS = ['`st.table`', '`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`']
 
-        st.markdown(f'''We reccomend you use 
-            {get_grid_recconmendation(
-            has_greater_than_50_rows, 
-            has_greater_than_1M_rows, 
-            want_built_in_sorting, 
-            want_built_in_filtering, 
-            want_built_in_excel_formulas, 
-            want_built_in_pivot_tables,
-            want_edits_to_propogate_to_rest_of_app,
-            want_automation)}. 
-        ''')
+PERFORMANCE_QUESTIONS = [
+    (
+        "My dataset has > 50 rows",
+        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'does not lay out all data statically, so it can handle large datasets'
+    ),
+    (
+        "My dataset has > 2M rows",
+        ['`Mito`'],
+        'does not out at 200 MB of data'
+    ),
+    (
+        "I want to apply apply conditional formatting",
+        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'allows you to pass a pandas styler object, or configure conditional formatting in the UI'
+    ),
+]
 
+EXPLORATION_QUESTIONS = [
+    (
+        "I want built-in sorting",
+        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'has built-in sorting'
+    ),
+    (
+        "I want built-in filtering",
+        ['`Mito`', '`AgGrid`'],
+        'has built-in filtering'
+    ),
+    (
+        "I want built-in graphing",
+        ['`Mito`'],
+        'has built-in graphing'
+    ), 
+]
+
+EDITING_QUESTIONS = [
+    (
+        "I want built-in single cell editing",
+        ['`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'has built-in single cell editing'
+    ),
+    (
+        "I want built-in Excel formulas",
+        ['`Mito`'],
+        'has built-in Excel formulas'
+    ),
+    (
+        "I want built-in pivot tables",
+        ['`Mito`'],
+        'has built-in pivot tables'
+    ),
+    (
+        "I want edits made to the grid to propagate to the rest of my app",
+        ['`st.data_editor`', '`Mito`', '`AgGrid`'],
+        'has built-in pivot tables'
+    ),
+    (
+        "I want to record user edits and reuse them on other datasets",
+        ['`Mito`'],
+        'records user edits in a Python script that can be reused on other datasets'
+    ),
+]
+
+CUSTOMIZATION_QUESTIONS = [
+    (
+        "I want to customize the grid's colors",
+        ['`AgGrid`'],
+        'allows you to customize the grid colors'
+    ),
+    (
+        "I want to customize how cells are rendered",
+        ['`AgGrid`'],
+        'allows you to customize how cells are rendered using JavaScript'
+    ),
+]
+
+QUESTIONS = {
+    'Performance Functionality': PERFORMANCE_QUESTIONS,
+    'Exploration Functionality': EXPLORATION_QUESTIONS,
+    'Editing Functionality': EDITING_QUESTIONS,
+    'Grid Customization': CUSTOMIZATION_QUESTIONS,
+}
+
+for question_type, questions in QUESTIONS.items():
+    st.subheader(question_type)
+    for question, grids_that_support_this, reason in questions:
+        print(question)
+        answer = st.checkbox(question)
+        if answer:
+            answers[question] = (grids_that_support_this, reason)
+
+st.subheader("Your Results")
+
+if len(answers) == 0:
+    st.success("Since you're not looking for any functionality, we reccomend `st.table`! It's the simplest grid, and is great for displaying small datasets.")
+else:
+    
+    available_grids = set(ALL_GRIDS)
+    for grids, reason in answers.values():
+        available_grids = available_grids.intersection(set(grids))
+
+    if len(available_grids) == 0:
+        # Show them the grids that support the most functionality, and tell them which features it doesn't support
+        # Find the grid that supports the most functionality
+        grid_supports_most = None
+        num_supports_most = 0
+        supports_most = []
+        does_not_support_most = []
+        for grid in ALL_GRIDS:
+            num_supports = sum([grid in grids for grids, _ in answers.values()])
+            if num_supports > num_supports_most:
+                grid_supports_most = grid
+                num_supports_most = num_supports
+                supports_most = [question for question, (grids, _) in answers.items() if grid in grids]
+                does_not_support_most = [question for question, (grids, _) in answers.items() if grid not in grids]
+
+        grid_supports_second_most = None
+        num_supports_second_most = 0
+        supports_second_most = []
+        does_not_support_second_most = []
+        for grid in ALL_GRIDS:
+            if grid == grid_supports_most:
+                continue
+            num_supports = sum([grid in grids for grids, _ in answers.values()])
+            if num_supports > num_supports_second_most:
+                grid_supports_second_most = grid
+                num_supports_second_most = num_supports
+                supports_second_most = [question for question, (grids, _) in answers.items() if grid in grids]
+                does_not_support_second_most = [question for question, (grids, _) in answers.items() if grid not in grids]
+
+        support_most_string = "\n - ".join(supports_most)
+        does_not_support_most_string = "\n - ".join(does_not_support_most)
+        support_second_most_string = "\n - ".join(supports_second_most)
+        does_not_support_second_most_string = "\n - ".join(does_not_support_second_most)
+        st.success(f"""The grid that supports the most functionality is {grid_supports_most}. It supports {num_supports_most} of the {len(answers)} features you're looking for.
+                   
+It supports:
+- {support_most_string}
+
+It does not support:
+- {does_not_support_most_string}
+""")
+
+        st.warning(f"""The grid that supports the second most functionality is {grid_supports_second_most}. It supports {num_supports_second_most} of the {len(answers)} features you're looking for.
+
+It supports:
+- {support_second_most_string}
+
+It does not support:
+- {does_not_support_second_most_string}""")
+
+    elif len(available_grids) == 1:
+        reasons = "\n - ".join([reason for _, reason in answers.values()])
+        st.success(f"""We reccomend {available_grids.pop()}! It's the best grid for your use case because: 
+- {reasons}.""")
+    else:
+        reasons = "\n - ".join([reason for _, reason in answers.values()])
+        st.success(f"""We reccomend using {" or ".join(available_grids)}! They're the best grids for your use case because each:
+- {reasons}.""")
 

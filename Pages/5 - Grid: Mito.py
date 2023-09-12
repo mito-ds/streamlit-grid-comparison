@@ -13,7 +13,7 @@ st.markdown("""
 - You want to record the edits that users make to the spreadsheet, so you can reuse those edits on other datasets. Aka: you want to build an automation!
 - You want the rest of your streamlit application to react to the data the user has selected
             
-**TL;DR** - `Mito` is great for providing an Excel-like experience to your users. It also allows you to record the edits that users make, like recording a marco in Excel, but with Python.
+**TL;DR** - `Mito` provides the most exploration and editing features of any grid, and so provides an Excel-like experience to your users. It also allows you to record the edits that users make, like recording a marco in Excel, but with Python.
 """)
 
 st.markdown("### Basic usage")
