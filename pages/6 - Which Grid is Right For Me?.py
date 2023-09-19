@@ -167,6 +167,6 @@ It does not support:
 - {reasons}.""")
     else:
         reasons = "\n - ".join([reason for _, reason in answers.values()])
-        st.success(f"""We reccomend using {" or ".join(available_grids)}! They're the best grids for your use case because each:
+        st.success(f"""We recommend using {" or ".join(available_grids)}! They're the best grids for your use case because each:
 - {reasons}.""")
 
