@@ -9,17 +9,15 @@ answers = {}
 
 ALL_GRIDS = ['`st.table`', '`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`']
 
+DATA_SIZE_QUESTION = 'My dataset has:'
+
 PERFORMANCE_QUESTIONS = [
     (
-        "My dataset has > 50 rows",
-        ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'],
-        'does not lay out all data statically, so it can handle large datasets'
-    ),
-    (
-        "My dataset has > 2M rows",
-        ['`Mito`'],
-        'has ability to render > 200 MB of data by default'
-    ),
+        DATA_SIZE_QUESTION,
+        ['less than 50 rows', 'more than 50 rows', 'more than 2M rows'],
+        [['st.table', '`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'], ['`st.dataframe`', '`st.data_editor`', '`Mito`', '`AgGrid`'], ['`Mito`']],
+        ['is designed for small datasets', 'does not lay out all data statically, so it can handle large datasets', 'has ability to render > 200 MB of data by default']
+    )
 ]
 
 EXPLORATION_QUESTIONS = [
@@ -86,24 +84,36 @@ CUSTOMIZATION_QUESTIONS = [
     ),
 ]
 
-QUESTIONS = {
+RADIO_BUTTON_QUESTIONS = {
     'Performance Functionality': PERFORMANCE_QUESTIONS,
+}
+
+CHECKBOX_QUESTIONS = {
+   
     'Exploration Functionality': EXPLORATION_QUESTIONS,
     'Editing Functionality': EDITING_QUESTIONS,
     'Grid Customization': CUSTOMIZATION_QUESTIONS,
 }
 
-for question_type, questions in QUESTIONS.items():
+for question_type, questions in RADIO_BUTTON_QUESTIONS.items():
+    st.subheader(question_type)
+    for question, options, grids_that_support_this, reason in questions:
+        answer = st.radio(question, options=options)
+        if answer:
+            # Get the index of the answer from options
+            answer_index = options.index(answer)
+            answers[question] = (grids_that_support_this[answer_index], reason[answer_index])
+
+for question_type, questions in CHECKBOX_QUESTIONS.items():
     st.subheader(question_type)
     for question, grids_that_support_this, reason in questions:
-        print(question)
         answer = st.checkbox(question)
         if answer:
             answers[question] = (grids_that_support_this, reason)
 
 st.subheader("Your Results")
 
-if len(answers) == 0:
+if len(answers) == 1 and answers[DATA_SIZE_QUESTION][0][0] == 'st.table': 
     st.success("Since you're not looking for any functionality, we reccomend `st.table`! It's the simplest grid, and is great for displaying small datasets.")
 else:
     
